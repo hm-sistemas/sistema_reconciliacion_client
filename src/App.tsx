@@ -1,12 +1,12 @@
 import React from "react";
 
 import "./App.css";
-import Login from "./components/auth/Login";
+import BasicLayout from "./layouts/BasicLayout";
 
 function App() {
   return (
     <div className="App">
-      <Login></Login>
+      <BasicLayout></BasicLayout>
     </div>
   );
 }
