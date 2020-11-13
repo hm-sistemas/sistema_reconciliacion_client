@@ -1,4 +1,5 @@
 import React from "react";
+import { Link, NavLink } from "react-router-dom";
 import { Layout, Menu } from "antd";
 import {
   AppstoreOutlined,
@@ -46,10 +47,10 @@ const Sidebar = () => {
           nav 6
         </Menu.Item>
         <Menu.Item key="7" icon={<TeamOutlined />}>
-          nav 7
+          <NavLink to="/register">Registro</NavLink>
         </Menu.Item>
         <Menu.Item key="8" icon={<ShopOutlined />}>
-          nav 8
+          <Link to="/login">Acceso</Link>
         </Menu.Item>
       </Menu>
     </Sider>
