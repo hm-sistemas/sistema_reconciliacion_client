@@ -25,7 +25,7 @@ const tailFormItemLayout = {
   },
 };
 
-const SignUpForm = () => {
+const SignUpForm = (props: any) => {
   const [form] = Form.useForm();
 
   const onFinish = (values: []) => {
