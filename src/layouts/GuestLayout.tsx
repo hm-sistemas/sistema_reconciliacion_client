@@ -12,9 +12,7 @@ const GuestLayout = (props: any) => {
       <Content style={{ padding: "0 50px" }}>
         <div className="site-layout-content">{props.children}</div>
       </Content>
-      <Footer style={{ textAlign: "center" }}>
-        Ant Design ©2018 Created by Ant UED
-      </Footer>
+      <Footer style={{ textAlign: "center" }}>HM</Footer>
     </Layout>
   );
 };

@@ -2,11 +2,7 @@ import { Form, Input, Button, Checkbox } from "antd";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
 import React from "react";
 
-const LoginForm = () => {
-  const onFinish = (values: any) => {
-    console.log("Received values of form: ", values);
-  };
-
+const LoginForm = ({ onFinish }: any) => {
   return (
     <Form
       name="normal_login"
@@ -15,33 +11,33 @@ const LoginForm = () => {
       onFinish={onFinish}
     >
       <Form.Item
-        name="username"
-        rules={[{ required: true, message: "Please input your Username!" }]}
+        name="email"
+        rules={[{ required: true, message: "Ingrese su direccion de correo" }]}
       >
         <Input
           prefix={<UserOutlined className="site-form-item-icon" />}
-          placeholder="Username"
+          placeholder="Correo"
         />
       </Form.Item>
       <Form.Item
         name="password"
-        rules={[{ required: true, message: "Please input your Password!" }]}
+        rules={[{ required: true, message: "Ingrese su contrasena" }]}
       >
         <Input
           prefix={<LockOutlined className="site-form-item-icon" />}
           type="password"
-          placeholder="Password"
+          placeholder="Contrasena"
         />
       </Form.Item>
       <Form.Item>
         <Form.Item name="remember" valuePropName="checked" noStyle>
-          <Checkbox>Remember me</Checkbox>
+          <Checkbox>Recordarme</Checkbox>
         </Form.Item>
       </Form.Item>
 
       <Form.Item>
         <Button type="primary" htmlType="submit" className="login-form-button">
-          Log in
+          Acceder
         </Button>
       </Form.Item>
     </Form>

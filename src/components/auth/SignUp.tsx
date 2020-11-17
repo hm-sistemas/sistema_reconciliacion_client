@@ -8,6 +8,6 @@ function SignUp() {
   const onFinish = (values: []) => {
     console.log("Success:", values);
   };
-  return <SignUpForm onFinish={() => onFinish} />;
+  return <SignUpForm onFinish={onFinish} />;
 }
 export default SignUp;

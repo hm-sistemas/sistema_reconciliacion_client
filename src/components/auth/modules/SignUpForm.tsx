@@ -25,12 +25,8 @@ const tailFormItemLayout = {
   },
 };
 
-const SignUpForm = (props: any) => {
+const SignUpForm = ({ onFinish }: any) => {
   const [form] = Form.useForm();
-
-  const onFinish = (values: []) => {
-    console.log("Received values of form: ", values);
-  };
 
   return (
     <Form
@@ -46,11 +42,11 @@ const SignUpForm = (props: any) => {
         rules={[
           {
             type: "email",
-            message: "The input is not valid E-mail!",
+            message: "Correo es invalido.",
           },
           {
             required: true,
-            message: "Please input your E-mail!",
+            message: "Correo es requerido.",
           },
         ]}
       >
@@ -63,7 +59,7 @@ const SignUpForm = (props: any) => {
         rules={[
           {
             required: true,
-            message: "Please input your password!",
+            message: "Ingrese su contrasena",
           },
         ]}
         hasFeedback
@@ -73,22 +69,20 @@ const SignUpForm = (props: any) => {
 
       <Form.Item
         name="confirm"
-        label="Confirm Password"
+        label="Confirme su contrasena"
         dependencies={["password"]}
         hasFeedback
         rules={[
           {
             required: true,
-            message: "Please confirm your password!",
+            message: "Confirme su contrasena",
           },
           ({ getFieldValue }) => ({
             validator(rule, value) {
               if (!value || getFieldValue("password") === value) {
                 return Promise.resolve();
               }
-              return Promise.reject(
-                "The two passwords that you entered do not match!"
-              );
+              return Promise.reject("Las contrasenas no coinciden.");
             },
           }),
         ]}
@@ -101,7 +95,7 @@ const SignUpForm = (props: any) => {
         label={
           <span>
             name&nbsp;
-            <Tooltip title="What do you want others to call you?">
+            <Tooltip title="Ingrese su nombre">
               <QuestionCircleOutlined />
             </Tooltip>
           </span>
@@ -109,7 +103,7 @@ const SignUpForm = (props: any) => {
         rules={[
           {
             required: true,
-            message: "Please input your name!",
+            message: "Nombre es requerido",
             whitespace: true,
           },
         ]}
@@ -119,7 +113,7 @@ const SignUpForm = (props: any) => {
 
       <Form.Item {...tailFormItemLayout}>
         <Button type="primary" htmlType="submit">
-          Register
+          Registrar
         </Button>
       </Form.Item>
     </Form>
