@@ -4,7 +4,7 @@ import React from "react";
 
 const LoginForm = ({ onFinish }: any) => {
   return (
-    <Card title="Hospital Mexico" bordered={false}>
+    <Card title="Acceso" bordered={false}>
       <Form
         name="normal_login"
         className="login-form"
