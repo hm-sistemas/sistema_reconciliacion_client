@@ -38,7 +38,7 @@ const SignUpForm = ({ onFinish }: any) => {
     >
       <Form.Item
         name="email"
-        label="E-mail"
+        label="Correo"
         rules={[
           {
             type: "email",
@@ -55,7 +55,7 @@ const SignUpForm = ({ onFinish }: any) => {
 
       <Form.Item
         name="password"
-        label="Password"
+        label="Contrasena"
         rules={[
           {
             required: true,
@@ -69,7 +69,7 @@ const SignUpForm = ({ onFinish }: any) => {
 
       <Form.Item
         name="confirm"
-        label="Confirme su contrasena"
+        label="Confirme"
         dependencies={["password"]}
         hasFeedback
         rules={[
@@ -94,7 +94,7 @@ const SignUpForm = ({ onFinish }: any) => {
         name="name"
         label={
           <span>
-            name&nbsp;
+            Nombre&nbsp;
             <Tooltip title="Ingrese su nombre">
               <QuestionCircleOutlined />
             </Tooltip>
@@ -112,7 +112,7 @@ const SignUpForm = ({ onFinish }: any) => {
       </Form.Item>
 
       <Form.Item {...tailFormItemLayout}>
-        <Button type="primary" htmlType="submit">
+        <Button block type="primary" htmlType="submit">
           Registrar
         </Button>
       </Form.Item>

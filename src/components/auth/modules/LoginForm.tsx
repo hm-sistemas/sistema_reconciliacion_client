@@ -43,6 +43,7 @@ const LoginForm = ({ onFinish }: any) => {
             type="primary"
             htmlType="submit"
             className="login-form-button"
+            block
           >
             Acceder
           </Button>
