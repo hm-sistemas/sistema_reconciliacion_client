@@ -7,11 +7,19 @@ import Spinner from "../elements/Spinner";
 
 import "./auth.css";
 
+function mapStateToProps(state: any) {
+  const { message } = state.message;
+  return {
+    message,
+  };
+}
+
 function SignUp() {
   const [loading, setLoading] = useState(false);
   const [successful, setSuccessful] = useState(false);
-  const onFinish = (values: []) => {
+  const onFinish = (values: any) => {
     setLoading(true);
+    values.device = navigator.userAgent;
     console.log("Success:", values);
   };
   if (loading) {
@@ -42,4 +50,4 @@ function SignUp() {
     );
   }
 }
-export default SignUp;
+export default connect(mapStateToProps)(SignUp);
