@@ -7,7 +7,7 @@ import { Alert } from "antd";
 
 import "./auth.css";
 
-function Login() {
+function Login(props: any) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [message, setMessage] = useState("");
@@ -18,8 +18,8 @@ function Login() {
     AuthService.login(values.email, values.password, values.device).then(
       (response) => {
         setError(false);
-        console.log(response);
         setLoading(false);
+        props.history.push("/");
       },
       (error) => {
         setError(true);

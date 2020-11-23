@@ -6,7 +6,7 @@ const { Header, Content, Footer } = Layout;
 
 const GuestLayout = (props: any) => {
   return (
-    <Layout className="layout">
+    <Layout>
       <Header>
         <div>
           <img src={logo} alt="Hospital Mexico" />

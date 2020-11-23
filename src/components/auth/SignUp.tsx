@@ -4,7 +4,6 @@ import SignUpForm from "./modules/SignUpForm";
 import Spinner from "../elements/Spinner";
 import { Alert } from "antd";
 import AuthService from "../../services/auth/auth.service";
-import { useHistory } from "react-router-dom";
 
 import "./auth.css";
 
@@ -12,8 +11,6 @@ function SignUp() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [message, setMessage] = useState("");
-
-  const history = useHistory();
 
   const onFinish = (values: any) => {
     setLoading(true);
@@ -28,7 +25,7 @@ function SignUp() {
       (response) => {
         setError(false);
         setLoading(false);
-        history.push("/login");
+        //history.push("/login");
       },
       (error) => {
         setError(true);

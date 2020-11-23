@@ -8,19 +8,19 @@ import BasicLayout from "./layouts/BasicLayout";
 import GuestLayout from "./layouts/GuestLayout";
 
 function App() {
-  let [user, setUser] = useState(false);
-
-  if (user) {
-    return (
-      <div className="App">
-        <BasicLayout>
-          <Switch>
-            <Route path="/" component={withRouter(Home)} />
-          </Switch>
-        </BasicLayout>
-      </div>
-    );
-  } else {
+  /* if (user) { */
+  return (
+    <div className="App">
+      <BasicLayout>
+        <Switch>
+          <Route exact path="/login" component={withRouter(Login)}></Route>
+          <Route exact path="/register" component={withRouter(SignUp)}></Route>
+          <Route path="/" component={withRouter(Home)} />
+        </Switch>
+      </BasicLayout>
+    </div>
+  );
+  /* } else {
     return (
       <div className="App">
         <GuestLayout>
@@ -35,7 +35,7 @@ function App() {
         </GuestLayout>
       </div>
     );
-  }
+  } */
 }
 
 export default App;
