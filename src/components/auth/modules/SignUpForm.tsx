@@ -55,11 +55,11 @@ const SignUpForm = ({ onFinish }: any) => {
 
       <Form.Item
         name="password"
-        label="Contrasena"
+        label="contraseña"
         rules={[
           {
             required: true,
-            message: "Ingrese su contrasena",
+            message: "Ingrese su contraseña",
           },
         ]}
         hasFeedback
@@ -75,14 +75,14 @@ const SignUpForm = ({ onFinish }: any) => {
         rules={[
           {
             required: true,
-            message: "Confirme su contrasena",
+            message: "Confirme su contraseña",
           },
           ({ getFieldValue }) => ({
             validator(rule, value) {
               if (!value || getFieldValue("password") === value) {
                 return Promise.resolve();
               }
-              return Promise.reject("Las contrasenas no coinciden.");
+              return Promise.reject("Las contraseñas no coinciden.");
             },
           }),
         ]}

@@ -14,7 +14,7 @@ const LoginForm = ({ onFinish }: any) => {
         <Form.Item
           name="email"
           rules={[
-            { required: true, message: "Ingrese su direccion de correo" },
+            { required: true, message: "Ingrese su dirección de correo" },
           ]}
         >
           <Input
@@ -24,12 +24,12 @@ const LoginForm = ({ onFinish }: any) => {
         </Form.Item>
         <Form.Item
           name="password"
-          rules={[{ required: true, message: "Ingrese su contrasena" }]}
+          rules={[{ required: true, message: "Ingrese su contraseña" }]}
         >
           <Input
             prefix={<LockOutlined className="site-form-item-icon" />}
             type="password"
-            placeholder="Contrasena"
+            placeholder="Contraseña"
           />
         </Form.Item>
         <Form.Item>
