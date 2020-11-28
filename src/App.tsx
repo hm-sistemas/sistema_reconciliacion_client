@@ -1,5 +1,5 @@
 import React from "react";
-import { Switch, Route, withRouter } from "react-router-dom";
+import { Switch, Route, withRouter, Redirect } from "react-router-dom";
 import "./App.css";
 import Login from "./components/auth/Login";
 import SignUp from "./components/auth/SignUp";
@@ -15,6 +15,7 @@ function App() {
           <Route exact path="/login" component={withRouter(Login)}></Route>
           <Route exact path="/register" component={withRouter(SignUp)}></Route>
           <PrivateRoute path="/" component={withRouter(Home)} />
+          <Redirect exact from="/logout" to="/login" />
         </Switch>
       </BasicLayout>
     </div>

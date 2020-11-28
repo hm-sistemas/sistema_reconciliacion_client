@@ -10,6 +10,7 @@ import {
   UserOutlined,
   UploadOutlined,
   VideoCameraOutlined,
+  HomeOutlined,
 } from "@ant-design/icons";
 
 import "./Sidebar.css";
@@ -31,7 +32,10 @@ const Sidebar = () => {
       <div>
         <img src={logo} alt="Hospital Mexico" />
       </div>
-      <Menu theme="dark" mode="inline" defaultSelectedKeys={["4"]}>
+      <Menu theme="dark" mode="inline" defaultSelectedKeys={["0"]}>
+        <Menu.Item key="0" icon={<HomeOutlined />}>
+          Inicio
+        </Menu.Item>
         <Menu.Item key="1" icon={<UserOutlined />}>
           Ingresos
         </Menu.Item>

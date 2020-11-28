@@ -1,22 +1,22 @@
 import React from "react";
 import { Layout, Menu } from "antd";
 import { Row, Col } from "antd";
-import {
-  LogoutOutlined,
-  SettingOutlined,
-  UserOutlined,
-} from "@ant-design/icons";
+import { withRouter } from "react-router-dom";
+import { LogoutOutlined, UserOutlined } from "@ant-design/icons";
 
 import "./AuthHeader.css";
+import User from "../../classes/User";
 
 const { SubMenu } = Menu;
 const { Header } = Layout;
 
 const AuthHeader = (props: any) => {
-  const user = localStorage.getItem("user");
+  const user = JSON.parse(localStorage.getItem("user")!);
 
-  const handleClick = (e: any) => {
-    console.log("click ", e);
+  const handleLogout = (e: any) => {
+    localStorage.removeItem("user");
+    props.history.push("/login");
+    window.location.reload();
   };
 
   return (
@@ -25,19 +25,28 @@ const AuthHeader = (props: any) => {
         <Col span={8}>
           <h2>Hospital Mexico - Sistema Reconciliación</h2>
         </Col>
-        <Col span={2} offset={14}>
-          <Menu onClick={handleClick} mode="inline" theme="dark">
-            <SubMenu key="SubMenu" icon={<SettingOutlined />} title="Hola">
-              <Menu.ItemGroup>
-                <Menu.Item key="setting:1">Hola</Menu.Item>
-                <Menu.Item key="logout">Salir</Menu.Item>
-              </Menu.ItemGroup>
-            </SubMenu>
-          </Menu>
+        <Col span={3} offset={13}>
+          {user ? (
+            <Menu mode="inline" theme="light">
+              <SubMenu key="SubMenu" icon={<UserOutlined />} title={user.name}>
+                <Menu.ItemGroup>
+                  <Menu.Item
+                    onClick={handleLogout}
+                    icon={<LogoutOutlined />}
+                    key="logout"
+                  >
+                    <span>Salir</span>
+                  </Menu.Item>
+                </Menu.ItemGroup>
+              </SubMenu>
+            </Menu>
+          ) : (
+            ""
+          )}
         </Col>
       </Row>
     </Header>
   );
 };
 
-export default AuthHeader;
+export default withRouter(AuthHeader);

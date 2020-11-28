@@ -1,6 +1,5 @@
 import React from "react";
 import { Layout } from "antd";
-
 import "./BasicLayout.css";
 import Sidebar from "./Sidebar/Sidebar";
 import logo from "../images/Hm-logo-04.png";
@@ -23,7 +22,7 @@ const BasicLayout = (props: any) => {
               {props.children}
             </div>
           </Content>
-          <Footer style={{ textAlign: "center" }}>HM</Footer>
+          <Footer style={{ textAlign: "center" }}>Hospital México</Footer>
         </Layout>
       </Layout>
     );
@@ -38,7 +37,7 @@ const BasicLayout = (props: any) => {
         <Content style={{ padding: "0 50px" }}>
           <div className="site-layout-content">{props.children}</div>
         </Content>
-        <Footer style={{ textAlign: "center" }}>HM</Footer>
+        <Footer style={{ textAlign: "center" }}>Hospital México</Footer>
       </Layout>
     );
   }
