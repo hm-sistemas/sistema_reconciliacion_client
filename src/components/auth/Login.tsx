@@ -20,6 +20,8 @@ function Login(props: any) {
         setError(false);
         setLoading(false);
         props.history.push("/");
+        // eslint-disable-next-line no-restricted-globals
+        location.reload();
       },
       (error) => {
         setError(true);

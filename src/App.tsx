@@ -4,6 +4,7 @@ import "./App.css";
 import Login from "./components/auth/Login";
 import SignUp from "./components/auth/SignUp";
 import Home from "./components/home/Home";
+import PrivateRoute from "./components/PrivateRoute";
 import BasicLayout from "./layouts/BasicLayout";
 
 function App() {
@@ -14,7 +15,7 @@ function App() {
         <Switch>
           <Route exact path="/login" component={withRouter(Login)}></Route>
           <Route exact path="/register" component={withRouter(SignUp)}></Route>
-          <Route path="/" component={withRouter(Home)} />
+          <PrivateRoute path="/" component={withRouter(Home)} />
         </Switch>
       </BasicLayout>
     </div>

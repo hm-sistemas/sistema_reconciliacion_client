@@ -13,6 +13,8 @@ import {
 } from "@ant-design/icons";
 
 import "./Sidebar.css";
+
+import logo from "../../images/Hm-logo-04.png";
 const { Sider } = Layout;
 
 const Sidebar = () => {
@@ -26,7 +28,9 @@ const Sidebar = () => {
         left: 0,
       }}
     >
-      <div className="logo" />
+      <div>
+        <img src={logo} alt="Hospital Mexico" />
+      </div>
       <Menu theme="dark" mode="inline" defaultSelectedKeys={["4"]}>
         <Menu.Item key="1" icon={<UserOutlined />}>
           Ingresos
