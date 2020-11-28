@@ -8,7 +8,6 @@ import PrivateRoute from "./components/PrivateRoute";
 import BasicLayout from "./layouts/BasicLayout";
 
 function App() {
-  /* if (user) { */
   return (
     <div className="App">
       <BasicLayout>
@@ -20,22 +19,6 @@ function App() {
       </BasicLayout>
     </div>
   );
-  /* } else {
-    return (
-      <div className="App">
-        <GuestLayout>
-          <Switch>
-            <Route exact path="/login" component={withRouter(Login)}></Route>
-            <Route
-              exact
-              path="/register"
-              component={withRouter(SignUp)}
-            ></Route>
-          </Switch>
-        </GuestLayout>
-      </div>
-    );
-  } */
 }
 
 export default App;

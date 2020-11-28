@@ -1,4 +1,5 @@
 import axios from "axios";
+import User from "../../classes/User";
 
 const API_URL = "http://localhost:8000/api/";
 
@@ -8,7 +9,13 @@ class AuthService {
       .post(API_URL + "login", { email, password, device })
       .then((response) => {
         if (response.data.token) {
-          localStorage.setItem("user", JSON.stringify(response.data));
+          const user = new User(
+            response.data.data.id,
+            response.data.data.name,
+            response.data.data.email
+          );
+          user.token = response.data.token;
+          localStorage.setItem("user", JSON.stringify(user));
         }
 
         return response.data;

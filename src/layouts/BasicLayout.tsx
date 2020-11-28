@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import { Layout } from "antd";
 
 import "./BasicLayout.css";
 import Sidebar from "./Sidebar/Sidebar";
 import logo from "../images/Hm-logo-04.png";
-import GuestLayout from "./GuestLayout";
+import AuthHeader from "./Header/AuthHeader";
 const { Header, Content, Footer } = Layout;
 
 const BasicLayout = (props: any) => {
@@ -14,6 +14,7 @@ const BasicLayout = (props: any) => {
       <Layout>
         <Sidebar />
         <Layout className="site-layout" style={{ marginLeft: 200 }}>
+          <AuthHeader />
           <Content className="content">
             <div
               className="site-layout-background"

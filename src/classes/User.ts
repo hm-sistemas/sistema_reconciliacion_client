@@ -1,6 +1,7 @@
 export default class User {
   name: string;
   email: string;
+  token: string = "";
   id: number;
 
   constructor(id: number, name: string, email: string) {
