@@ -5,7 +5,6 @@ import { withRouter } from "react-router-dom";
 import { LogoutOutlined, UserOutlined } from "@ant-design/icons";
 
 import "./AuthHeader.css";
-import User from "../../classes/User";
 
 const { SubMenu } = Menu;
 const { Header } = Layout;

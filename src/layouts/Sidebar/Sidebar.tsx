@@ -2,14 +2,11 @@ import React from "react";
 import { Link, NavLink } from "react-router-dom";
 import { Layout, Menu } from "antd";
 import {
-  AppstoreOutlined,
-  BarChartOutlined,
-  CloudOutlined,
-  ShopOutlined,
-  TeamOutlined,
-  UserOutlined,
-  UploadOutlined,
-  VideoCameraOutlined,
+  ScheduleOutlined,
+  FileTextOutlined,
+  FolderOutlined,
+  DollarOutlined,
+  CreditCardOutlined,
   HomeOutlined,
 } from "@ant-design/icons";
 
@@ -33,32 +30,23 @@ const Sidebar = () => {
         <img src={logo} alt="Hospital Mexico" />
       </div>
       <Menu theme="dark" mode="inline" defaultSelectedKeys={["0"]}>
-        <Menu.Item key="0" icon={<HomeOutlined />}>
-          Inicio
+        <Menu.Item key="1" icon={<HomeOutlined />}>
+          <NavLink to="/">Inicio</NavLink>
         </Menu.Item>
-        <Menu.Item key="1" icon={<UserOutlined />}>
-          Ingresos
+        <Menu.Item key="2" icon={<DollarOutlined />}>
+          <Link to="/ingresos">Ingresos</Link>
         </Menu.Item>
-        <Menu.Item key="2" icon={<VideoCameraOutlined />}>
-          Cortes
+        <Menu.Item key="3" icon={<FolderOutlined />}>
+          <NavLink to="/cortes">Cortes</NavLink>
         </Menu.Item>
-        <Menu.Item key="3" icon={<UploadOutlined />}>
-          Facturas
+        <Menu.Item key="4" icon={<FileTextOutlined />}>
+          <Link to="/facturas">Facturas</Link>
         </Menu.Item>
-        <Menu.Item key="4" icon={<BarChartOutlined />}>
-          Depositos
+        <Menu.Item key="5" icon={<ScheduleOutlined />}>
+          <NavLink to="/depositos">Depositos</NavLink>
         </Menu.Item>
-        <Menu.Item key="5" icon={<CloudOutlined />}>
-          nav 5
-        </Menu.Item>
-        <Menu.Item key="6" icon={<AppstoreOutlined />}>
-          nav 6
-        </Menu.Item>
-        <Menu.Item key="7" icon={<TeamOutlined />}>
-          <NavLink to="/register">Registro</NavLink>
-        </Menu.Item>
-        <Menu.Item key="8" icon={<ShopOutlined />}>
-          <Link to="/login">Acceso</Link>
+        <Menu.Item key="6" icon={<CreditCardOutlined />}>
+          <Link to="/movimientos">Movimientos</Link>
         </Menu.Item>
       </Menu>
     </Sider>
