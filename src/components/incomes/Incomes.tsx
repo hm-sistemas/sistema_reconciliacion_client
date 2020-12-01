@@ -1,6 +1,7 @@
 import React, { Fragment } from "react";
-import { PageHeader, Card } from "antd";
+import { Card } from "antd";
 import IncomesTable from "./modules/IncomesTable";
+import IncomesHeader from "./modules/IncomesHeader";
 
 const data = [
   {
@@ -29,7 +30,7 @@ const data = [
 const Incomes = () => {
   return (
     <Fragment>
-      <PageHeader className="site-page-header" title="Ingresos" />
+      <IncomesHeader />
       <Card loading={false}>
         <IncomesTable data={data} />
       </Card>
