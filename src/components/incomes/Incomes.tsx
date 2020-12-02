@@ -1,7 +1,8 @@
-import React, { Fragment } from "react";
-import { Card } from "antd";
+import React, { Fragment, useState } from "react";
+import { Card, Modal } from "antd";
 import IncomesTable from "./modules/IncomesTable";
 import IncomesHeader from "./modules/IncomesHeader";
+import AddIncomeForm from "./modules/AddIncomeForm";
 
 const data = [
   {
@@ -28,12 +29,30 @@ const data = [
 ];
 
 const Incomes = () => {
+  const [addModalVisible, setAddModalVisible] = useState(false);
+  const [confirmAddLoading, setConfirmAddLoading] = useState(false);
+  const handleAddCancel = () => {
+    console.log("Clicked cancel button");
+    setAddModalVisible(false);
+  };
+  const handleAddIncome = () => {
+    console.log("Clicked add button");
+  };
   return (
     <Fragment>
-      <IncomesHeader />
+      <IncomesHeader showAddModal={() => setAddModalVisible(true)} />
       <Card loading={false}>
         <IncomesTable data={data} />
       </Card>
+      <Modal
+        title="Title"
+        visible={addModalVisible}
+        onOk={handleAddIncome}
+        confirmLoading={confirmAddLoading}
+        onCancel={handleAddCancel}
+      >
+        <AddIncomeForm />
+      </Modal>
     </Fragment>
   );
 };

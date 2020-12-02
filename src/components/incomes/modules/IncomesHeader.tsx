@@ -1,7 +1,11 @@
-import React, { Fragment } from "react";
+import React, { Fragment, FC } from "react";
 import { PageHeader, Tag, Button, Statistic, Row } from "antd";
 
-const IncomesHeader = () => {
+interface IMyProps {
+  showAddModal: any;
+}
+
+const IncomesHeader: FC<IMyProps> = (props: IMyProps) => {
   return (
     <Fragment>
       <PageHeader
@@ -9,7 +13,7 @@ const IncomesHeader = () => {
         tags={<Tag color="yellow">Pendientes</Tag>}
         subTitle="Fecha a fecha"
         extra={[
-          <Button key="1" type="primary">
+          <Button key="1" type="primary" onClick={props.showAddModal}>
             Registrar
           </Button>,
         ]}
