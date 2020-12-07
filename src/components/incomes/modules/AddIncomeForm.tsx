@@ -1,9 +1,17 @@
 import React, { useState } from "react";
 import { Form, Input, Button, InputNumber } from "antd";
 import DatePicker from "../../elements/DatePicker";
+import RateService from "../../../services/rate.service";
 
 const AddIncomeForm = () => {
   const [form] = Form.useForm();
+
+  const onChangeDate = (e: any) => {
+    console.log("Received values of form: ", e.format("DD/MM/YYYY"));
+    RateService.search(e.format("DD-MM-YYYY")).then((rate) => {
+      console.log("rate: ", rate);
+    });
+  };
 
   return (
     <Form layout="vertical" form={form}>
@@ -12,7 +20,7 @@ const AddIncomeForm = () => {
         label="Fecha"
         rules={[{ required: true, message: "Seleccione una fecha" }]}
       >
-        <DatePicker />
+        <DatePicker onChange={onChangeDate} />
       </Form.Item>
       <Form.Item label="Tipo de cambio">
         <InputNumber
