@@ -10,6 +10,7 @@ const AddIncomeForm = () => {
     console.log("Received values of form: ", e.format("DD/MM/YYYY"));
     RateService.search(e.format("DD-MM-YYYY")).then((rate) => {
       console.log("rate: ", rate);
+      form.setFieldsValue({ exhangeRate: rate });
     });
   };
 
@@ -22,7 +23,7 @@ const AddIncomeForm = () => {
       >
         <DatePicker onChange={onChangeDate} />
       </Form.Item>
-      <Form.Item label="Tipo de cambio">
+      <Form.Item label="Tipo de cambio" name="exchangeRate">
         <InputNumber
           defaultValue={0}
           formatter={(value) =>
