@@ -3,7 +3,7 @@ import { Form, Input, Button, InputNumber } from "antd";
 import DatePicker from "../../elements/DatePicker";
 import RateService from "../../../services/rate.service";
 
-const AddIncomeForm = () => {
+const AddIncomeForm = ({ onFinish }: any) => {
   const [form] = Form.useForm();
 
   const onChangeDate = (e: any) => {
@@ -15,7 +15,7 @@ const AddIncomeForm = () => {
   };
 
   return (
-    <Form layout="vertical" form={form}>
+    <Form layout="vertical" form={form} onFinish={onFinish}>
       <Form.Item
         name="date"
         label="Fecha"

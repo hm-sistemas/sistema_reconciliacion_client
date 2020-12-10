@@ -32,11 +32,11 @@ const Incomes = () => {
   const [addModalVisible, setAddModalVisible] = useState(false);
   const [confirmAddLoading, setConfirmAddLoading] = useState(false);
   const handleAddCancel = () => {
-    console.log("Clicked cancel button");
     setAddModalVisible(false);
   };
-  const handleAddIncome = () => {
-    console.log("Clicked add button");
+  const handleAddIncome = (values: any) => {
+    setConfirmAddLoading(true);
+    console.log("Clicked add button", values);
   };
   return (
     <Fragment>
@@ -45,13 +45,13 @@ const Incomes = () => {
         <IncomesTable data={data} />
       </Card>
       <Modal
-        title="Title"
+        title="Registrar"
         visible={addModalVisible}
         onOk={handleAddIncome}
         confirmLoading={confirmAddLoading}
         onCancel={handleAddCancel}
       >
-        <AddIncomeForm />
+        <AddIncomeForm onFinish={handleAddIncome} />
       </Modal>
     </Fragment>
   );

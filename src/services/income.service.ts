@@ -8,7 +8,7 @@ class IncomeService {
   get() {
     return axios.get(API_URL + "incomes", { headers: authHeader() });
   }
-  create(income: Income) {
+  create(income: any) {
     return axios.post(API_URL + "incomes", income, { headers: authHeader() });
   }
 }
