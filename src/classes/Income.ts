@@ -20,11 +20,13 @@ export default class Income {
     id: number,
     exchangeRate: number,
     comments: string,
-    depositId: number
+    depositId: number,
+    date: string
   ) {
     this.exchangeRate = exchangeRate;
     this.comments = comments;
     this.id = id;
     this.depositId = depositId;
+    this.date = dayjs(date);
   }
 }

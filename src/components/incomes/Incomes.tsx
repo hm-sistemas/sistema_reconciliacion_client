@@ -1,8 +1,11 @@
-import React, { Fragment, useState } from "react";
-import { Card, Modal } from "antd";
+import React, { Fragment, useEffect, useState } from "react";
+import { Card, Alert } from "antd";
 import IncomesTable from "./modules/IncomesTable";
 import IncomesHeader from "./modules/IncomesHeader";
 import AddIncomeForm from "./modules/AddIncomeForm";
+
+import IncomeService from "../../services/income.service";
+import Income from "../../classes/Income";
 
 const data = [
   {
@@ -31,28 +34,92 @@ const data = [
 const Incomes = () => {
   const [addModalVisible, setAddModalVisible] = useState(false);
   const [confirmAddLoading, setConfirmAddLoading] = useState(false);
-  const handleAddCancel = () => {
-    setAddModalVisible(false);
+  const [alertVisible, setAlertVisible] = useState(false);
+
+  const [incomes, setIncomes] = useState([] as Income[]);
+  const [loadingIncomes, setloadingIncomes] = useState(true);
+  const handleAlertClose = () => {
+    setAlertVisible(false);
   };
+
   const handleAddIncome = (values: any) => {
     setConfirmAddLoading(true);
-    console.log("Clicked add button", values);
+    values.date = values.date.format("YYYY-MM-DD");
+    IncomeService.create(values)
+      .then((resp: any) => {
+        console.log(resp.data);
+        setAlertVisible(true);
+        setAddModalVisible(false);
+      })
+      .catch((error) => {
+        if (error.response) {
+          //request was made and server responded with status code
+          console.log(error.response);
+        } else if (error.request) {
+          //request was made and no response received
+          console.log(error.request);
+        } else {
+          console.log(error.message);
+        }
+      })
+      .finally(() => setConfirmAddLoading(false));
   };
+
+  const getIncomes = () => {
+    IncomeService.get()
+      .then((response) => {
+        let inco: Income[] = [];
+        if (response.data.data.length > 0) {
+          console.log(response.data.data);
+          response.data.data.forEach((element: any) => {
+            const income = new Income(
+              element.id,
+              element.exchangeRate,
+              element.comments,
+              element.depositId,
+              element.date
+            );
+            console.log(income);
+            inco.push(income);
+          });
+        }
+        setIncomes(inco);
+        console.log(incomes);
+      })
+      .catch((e) => {
+        console.log(e);
+      })
+      .finally(() => {
+        setloadingIncomes(false);
+      });
+  };
+
+  useEffect(() => {
+    getIncomes();
+  }, []);
+
   return (
     <Fragment>
       <IncomesHeader showAddModal={() => setAddModalVisible(true)} />
-      <Card loading={false}>
+      {alertVisible ? (
+        <Alert
+          message="Registro exitoso"
+          type="success"
+          showIcon
+          closable
+          afterClose={handleAlertClose}
+        />
+      ) : null}
+      <Card loading={loadingIncomes}>
         <IncomesTable data={data} />
       </Card>
-      <Modal
-        title="Registrar"
+
+      <AddIncomeForm
+        addIncome={handleAddIncome}
         visible={addModalVisible}
-        onOk={handleAddIncome}
-        confirmLoading={confirmAddLoading}
-        onCancel={handleAddCancel}
-      >
-        <AddIncomeForm onFinish={handleAddIncome} />
-      </Modal>
+        onCancel={() => setAddModalVisible(false)}
+        confirmAddLoading={confirmAddLoading}
+      />
     </Fragment>
   );
 };

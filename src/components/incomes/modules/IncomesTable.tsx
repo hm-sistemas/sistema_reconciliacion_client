@@ -1,27 +1,28 @@
 import React from "react";
 import { Table, Tag, Space } from "antd";
+import { Dayjs } from "dayjs";
 
 const IncomesTable = (props: any) => {
   const columns = [
     {
-      title: "Name",
-      dataIndex: "name",
-      key: "name",
-      render: (text: string) => <b>{text}</b>,
+      title: "Fecha",
+      dataIndex: "date",
+      key: "date",
+      render: (date: Dayjs) => <b>{date.format("MM-DD-YYYY")}</b>,
     },
     {
-      title: "Age",
-      dataIndex: "age",
-      key: "age",
+      title: "Tipo de cambio",
+      dataIndex: "exchangeRate",
+      key: "exchangeRate",
     },
     {
-      title: "Address",
-      dataIndex: "address",
-      key: "address",
+      title: "Total",
+      dataIndex: "total",
+      key: "total",
     },
-    {
-      title: "Tags",
-      key: "tags",
+    /* {
+      title: "Depositado",
+      key: "depositId",
       dataIndex: "tags",
       render: (tags: any) => (
         <>
@@ -38,8 +39,8 @@ const IncomesTable = (props: any) => {
           })}
         </>
       ),
-    },
-    {
+    }, */
+    /* {
       title: "Action",
       key: "action",
       render: (text: string, record: any) => (
@@ -48,9 +49,9 @@ const IncomesTable = (props: any) => {
           <a>Delete</a>
         </Space>
       ),
-    },
+    }, */
   ];
-  return <Table columns={columns} dataSource={props.data} />;
+  return <Table columns={columns} dataSource={props.incomes} />;
 };
 
 export default IncomesTable;
