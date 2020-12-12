@@ -36,7 +36,7 @@ const Incomes = () => {
   const [confirmAddLoading, setConfirmAddLoading] = useState(false);
   const [alertVisible, setAlertVisible] = useState(false);
 
-  const [incomes, setIncomes] = useState([] as Income[]);
+  const [incomes, setIncomes] = useState<Income[]>([]);
   const [loadingIncomes, setloadingIncomes] = useState(true);
   const handleAlertClose = () => {
     setAlertVisible(false);
@@ -68,10 +68,10 @@ const Incomes = () => {
   const getIncomes = () => {
     IncomeService.get()
       .then((response) => {
-        let inco: Income[] = [];
-        if (response.data.data.length > 0) {
-          console.log(response.data.data);
-          response.data.data.forEach((element: any) => {
+        const receivedIncomes = response.data.data;
+        if (receivedIncomes.length > 0) {
+          const newIncomes: Income[] = [];
+          receivedIncomes.forEach((element: any) => {
             const income = new Income(
               element.id,
               element.exchangeRate,
@@ -80,10 +80,13 @@ const Incomes = () => {
               element.date
             );
             console.log(income);
-            inco.push(income);
+            newIncomes.push(income);
+            // setIncomes((prevIncomes) => [...prevIncomes, income]);
           });
+          console.log(newIncomes);
+          setIncomes(newIncomes);
         }
-        setIncomes(inco);
+
         console.log(incomes);
       })
       .catch((e) => {
